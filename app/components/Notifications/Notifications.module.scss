@@ -1,0 +1,10 @@
+
+.notifications {
+    grid-area: video;
+    align-self: start;
+    color: yellow;
+    z-index: 1;
+    //pointer-events: none;
+    outline: 3px solid red;
+
+}

@@ -1,0 +1,17 @@
+
+.video {
+    background: black;
+    grid-area: video;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 0;
+    overflow: hidden;
+
+    video {
+        width: 100vw;
+        height: calc(100vh - 60px);
+        //object-fit: cover;
+        outline: 1px solid aqua;
+    }
+}
