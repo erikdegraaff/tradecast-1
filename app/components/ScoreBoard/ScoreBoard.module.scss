@@ -1,0 +1,37 @@
+@import '../../globals.scss';
+
+.scoreBoard {
+    grid-area: scores;
+
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+
+    z-index: 2;
+    background: white; 
+
+    p {
+        padding: 0 $pad 0 $pad;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-transform: uppercase;
+   
+        &.score {
+            background: $light;
+            color: $dark;
+            padding: 0 $pad 0 $pad;
+            font-weight: 700;
+
+            span {
+                padding: 0 $pad 0 $pad;
+                font-weight: 400;
+            }
+        }
+        &.time {
+            background: $red;
+            color: $light;
+            font-weight: 700;
+        }
+    }
+}

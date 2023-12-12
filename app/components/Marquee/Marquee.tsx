@@ -9,13 +9,15 @@ interface Props {
     delimiter: string
     duration: number
     reversed?: boolean
+    paused?: boolean
 }
 
 export default function Marquee({
     texts,
     delimiter,
     duration,
-    reversed    
+    reversed,
+    paused  
 } : Props) {
     const [width, setWidth] = useState({compWidth: 0, textWidth: 0})        
     const windowSize = useWindowSize()
@@ -43,12 +45,12 @@ export default function Marquee({
 
     const animationDuration = `${(width.textWidth / width.compWidth) * (duration * (width.compWidth / 20))}s`
     const animationDirection = reversed ? 'reverse' : 'normal'
-
+    const animationPlayState = paused ? 'paused' : 'running'
     const opacity = width.textWidth > 0 ? 1 : 0
 
     return (
         <div className={styles.marquee} ref={compRef} style={{opacity}}>
-            <span ref={textRef} style={{textShadow, animationDuration, animationDirection}}>{marqueeText}</span>            
+            <span ref={textRef} style={{textShadow, animationDuration, animationDirection, animationPlayState}}>{marqueeText}</span>            
         </div>
     )
 }

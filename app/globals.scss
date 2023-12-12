@@ -1,7 +1,29 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
-body {
+
+$dark: #0b3954ff;
+$light: white;
+//$teal: #087e8bff;
+$light-blue: #bfd7eaff;
+//$bittersweet: #ff5a5fff;
+$red: #c81d25ff;
+
+
+$pad: 10px;
+
+
+:export {
+    light: $light;
+    dark: $dark;
+    red: $red;
+    light-blue: $light-blue;
+
+    pad: $pad;
+}
+
+.body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    font-size: 1rem;
 }

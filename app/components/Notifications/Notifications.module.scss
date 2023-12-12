@@ -1,10 +1,24 @@
+@import '../../globals.scss';
 
 .notifications {
     grid-area: video;
-    align-self: start;
-    color: yellow;
     z-index: 1;
-    //pointer-events: none;
-    outline: 3px solid red;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: $pad;
 
+    .notification {
+        background: white;
+        position: absolute;
+        padding: 0px $pad 0px $pad;
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+        transition: clip-path .6s ease;
+
+        &.visible {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }    
+    }
 }

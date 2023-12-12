@@ -1,17 +1,18 @@
+@import '../../globals.scss';
 
 .marquee {
     overflow: hidden;
-    background-color: white;
-    grid-area: marquee;
-    font-size: 1.2rem;
+    height: 100%;
     display: flex;
     align-items: center;
-    height: 40px;
-
+    background: $dark;
+    
     span {
         white-space: nowrap;
         display: inline-block;
         animation: marquee 0s linear infinite;
+        color: $light;
+
     }
 
     @keyframes marquee {
