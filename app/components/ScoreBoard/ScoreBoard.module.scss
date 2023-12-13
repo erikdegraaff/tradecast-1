@@ -4,7 +4,7 @@
     grid-area: scores;
 
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto auto;
     align-items: center;
 
     z-index: 2;
@@ -20,9 +20,9 @@
         &.score {
             background: $light;
             color: $dark;
-            //padding: 0 $pad 0 $pad;
             font-weight: 700;
-
+            display: flex;
+            justify-content: space-around;
             span {
                 padding: 0 $pad 0 $pad;
                 font-weight: 400;
@@ -33,6 +33,9 @@
             padding: 0 $pad*2 0 $pad*2;
             color: $light;
             font-weight: 700;
+            display: flex;
+            justify-content: space-around;
+
         }
     }
 }
