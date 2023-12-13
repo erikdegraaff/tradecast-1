@@ -1,41 +1,29 @@
 'use client'
-import React, { SyntheticEvent, useState } from 'react';
+
+import React, { SyntheticEvent, useState, useRef } from 'react';
 import styles from './VideoPlayer.module.scss'
+
+import {Score, Events} from '../../types'
+
 import Notifications from '../Notifications/Notifications';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import Button from '../Button/Button';
 import Marquee from '../Marquee/Marquee'
 import Overlay from '../Overlay/Overlay'
-
-
-interface Score {
-    home: number
-    away: number
-}
-interface Events {
-    id: string
-    time: number
-    type: string
-    visible: boolean
-    player?: string
-    distanceOfShot?: number
-    newScore?: Score 
-}
-
-
 interface Props {
     data: any
 }
 
-function isInTime(time: number, events: Events[]) {
-}
-
 export default function VideoPlayer({data}: Props) {
-    const [events, setEvents] = useState<Events[]>(data.events.map((ev:Events) => {return {...ev, visible: false}}))
+    const [events, setEvents] = useState<Events[]>(data.events.sort((a: Events, b: Events) => {return a.time - b.time}).map((ev:Events) => {return {...ev, visible: false}}))
     const [paused, setPaused] = useState(true)
     const [score, setScore] = useState<Score | undefined>({home: 0, away: 0})
     const [gameTime, setGameTime] = useState('0:00')
     const [gameEnded, setGameEnded] = useState(false)
+
+    const videoRef = useRef<HTMLVideoElement>(null)
+
+    const gameEndedTime = parseFloat((events.filter((ev) => {return ev.type === 'endGame'})[0].time/10).toFixed(2))
 
     const marqueeTexts:string[] = []
     data.ticker.map((tick: any) => {
@@ -72,26 +60,32 @@ export default function VideoPlayer({data}: Props) {
                 }
             }
         })
-        scores.sort((a, b) => {return a.time - b.time})
-
         const score = scores.length ? scores[scores.length - 1].newScore : {home: 0, away: 0}
         setScore(score)
 
-        // game ended
-        const gameEndedTime = parseFloat((events.filter((ev) => {return ev.type === 'endGame'})[0].time/10).toFixed(2))
         setGameEnded(currTime > gameEndedTime + 0.05)
     }
 
-    // console.log(gameEnded)
-    // videoRef.seekTo(0)
+    const replayVideo = () => {
+        if(videoRef.current) {
+            videoRef.current.currentTime = 0
+            videoRef.current.play()
+            setGameEnded(false)
+        }
+    }
+
+    //const eventsOnScreen = events.filter((ev) => {return ev.visible === true})
+
     return (
         <div className={styles.videoPlayer}>
-            <Overlay visible={gameEnded}></Overlay>
+            <Overlay visible={gameEnded}>
+                <Button onClick={replayVideo}>Replay Video</Button>
+            </Overlay>
             <ScoreBoard gameTime={gameTime} score={score}>
                 <Marquee texts={marqueeTexts} delimiter='&nbsp;&nbsp;&bull;&nbsp;&nbsp;' duration={0.5} paused={paused} />
             </ScoreBoard>
             <Notifications notifications={events}></Notifications>
-            <video muted controls onPlay={() => setPaused(false)} onPause={() => setPaused(true)} onTimeUpdate={handleTimeUpdate}>
+            <video muted controls ref={videoRef} onPlay={() => setPaused(false)} onPause={() => setPaused(true)} onTimeUpdate={handleTimeUpdate}>
                 <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
             </video>          
         </div>

@@ -8,17 +8,35 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    top: $pad;
+    //top: $pad;
+    //margin-top: $pad/2;
+    
 
     .notification {
-        background: white;
-        position: absolute;
-        padding: 0px $pad 0px $pad;
+        background: $light;
+        padding: $pad;
         clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
         transition: clip-path .6s ease;
+        z-index: 10;
+        font-size: .8rem;
+        position: absolute;
+        opacity: .5;
 
         &.visible {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         }    
+
+        p {
+            color: $dark;
+            margin: 0px;
+            &:first-child {
+                margin-top: $pad;
+            }
+        }
+        h4 {
+            text-transform: uppercase;
+            color: $primary;
+            margin: 0px;
+        }
     }
 }

@@ -1,22 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
-$dark: #0b3954ff;
-$light: #eee;
-//$teal: #087e8bff;
-$light-blue: #bfd7eaff;
-//$bittersweet: #ff5a5fff;
-$red: #c81d25ff;
-
+$dark: #1C1F33;
+$primary: #2a4494ff;
+$light: #e0f2e9ff;
 
 $pad: 10px;
 
-
 :export {
-    light: $light;
     dark: $dark;
-    red: $red;
-    light-blue: $light-blue;
+    light: $light;
+    primary: $primary;
 
     pad: $pad;
 }
@@ -26,4 +20,5 @@ $pad: 10px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+    line-height: 1.2rem;
 }
