@@ -5,6 +5,7 @@ import Notifications from '../Notifications/Notifications';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import Button from '../Button/Button';
 import Marquee from '../Marquee/Marquee'
+import Overlay from '../Overlay/Overlay'
 
 
 interface Score {
@@ -19,7 +20,7 @@ interface Events {
     player?: string
     distanceOfShot?: number
     newScore?: Score 
-    }
+}
 
 
 interface Props {
@@ -78,15 +79,14 @@ export default function VideoPlayer({data}: Props) {
 
         // game ended
         const gameEndedTime = parseFloat((events.filter((ev) => {return ev.type === 'endGame'})[0].time/10).toFixed(2))
-        if(currTime > gameEndedTime + 0.05) {
-            setGameEnded(true)
-        }
+        setGameEnded(currTime > gameEndedTime + 0.05)
     }
 
-    console.log(gameEnded)
-
+    // console.log(gameEnded)
+    // videoRef.seekTo(0)
     return (
         <div className={styles.videoPlayer}>
+            <Overlay visible={gameEnded}></Overlay>
             <ScoreBoard gameTime={gameTime} score={score}>
                 <Marquee texts={marqueeTexts} delimiter='&nbsp;&nbsp;&bull;&nbsp;&nbsp;' duration={0.5} paused={paused} />
             </ScoreBoard>
