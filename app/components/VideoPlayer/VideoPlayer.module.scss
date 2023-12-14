@@ -1,20 +1,20 @@
-
 .videoPlayer {
-
     display: grid;
-    grid-template-rows: 55px 1fr;    
-    grid-template-areas: "scores" "video";
+    position: relative;
+    grid-template-rows: 55px 1fr;
+    grid-template-areas: 'scores' 'video';
+    box-shadow:
+        rgba(0, 0, 0, 0.3) 0px 19px 38px,
+        rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    border-radius: 5px;
 
     width: 80vw;
     max-width: 1200px;
     overflow: hidden;
-    position: relative;
-
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
     @media (orientation: portrait) {
-        width: 100vw;        
+        width: 100vw;
     }
 
     video {

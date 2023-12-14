@@ -1,31 +1,35 @@
 @import '../../globals.scss';
 
 .notifications {
-    grid-area: video;
-    z-index: 10;
-    pointer-events: none;
     display: flex;
+    position: relative;
+    grid-area: video;
     flex-direction: column;
     align-items: flex-start;
-    position: relative;
-    
+    z-index: 10;
+    pointer-events: none;
+
     .notification {
-        background: $light;
-        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-        transition: clip-path .6s ease, max-height .6s ease .6s;
         z-index: 10;
-        font-size: .8rem;
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+        transition:
+            clip-path 0.6s ease,
+            max-height 0.6s ease 0.6s;
+        background: $light;
         max-height: 0px;
         overflow: hidden;
+        font-size: 0.8rem;
 
         &.visible {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            transition:
+                clip-path 0.6s ease 0.6s,
+                max-height 0.6s ease;
             max-height: 100px;
-            transition: clip-path .6s ease .6s, max-height .6s ease;
-        }    
+        }
         p {
-            color: $dark;
             margin: 0px $space 0px $space;
+            color: $dark;
             &:first-child {
                 margin-top: $space/2;
             }
@@ -34,9 +38,9 @@
             }
         }
         h4 {
+            margin: $space $space 0px $space;
             color: $primary;
             text-transform: uppercase;
-            margin: $space $space 0px $space;
             &:last-child {
                 margin-bottom: $space;
             }

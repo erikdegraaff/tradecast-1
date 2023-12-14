@@ -1,15 +1,16 @@
 import { ReactNode } from 'react'
 
-import styles from'./Button.module.scss'
+import styles from './Button.module.scss'
 
 interface Props {
-  onClick: any
-  children: ReactNode
+    onClick: any
+    children: ReactNode
 }
 
-export default function Button({onClick, children} : Props) {
+export default function Button({ onClick, children }: Props) {
     return (
-      <button className={styles.button} onClick={onClick}>{children}</button>
+        <button className={styles.button} onClick={onClick}>
+            {children}
+        </button>
     )
-  }
-  
+}

@@ -1,7 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
-$dark: #1C1F33;
+$dark: #1c1f33;
 $primary: #2a4494ff;
 $light: #e0f2e9ff;
 
@@ -17,8 +16,8 @@ $space: 12px;
 
 .body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.2rem;
+    font-family: 'Roboto', sans-serif;
 }

@@ -1,19 +1,17 @@
 @import '../../globals.scss';
 
 .button {
-    min-width: 100px;
-    padding: $space $space*2 $space $space*2;
-    color: $light;
-    background: $primary;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
     cursor: pointer;
     border: none;
-    transition: background-color .3s ease;
+    border-radius: 5px;
+    background: $primary;
+    padding: $space $space * 2 $space $space * 2;
+    min-width: 100px;
+    color: $light;
     font-weight: 700;
 
     &:hover {
         background: darken($primary, 10);
     }
 }
-
-

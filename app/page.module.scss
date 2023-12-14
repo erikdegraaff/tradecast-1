@@ -1,10 +1,10 @@
 @import './globals.scss';
 
 .page {
-    height: 100vh;
-    width: 100vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: darken($dark, 5);
+    width: 100vw;
+    height: 100vh;
 }

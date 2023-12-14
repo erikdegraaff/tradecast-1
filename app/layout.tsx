@@ -2,17 +2,17 @@ import type { Metadata } from 'next'
 import './globals.scss'
 
 export const metadata: Metadata = {
-  title: 'Soccer Game'
+    title: 'Soccer Game',
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className='body'>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className="body">{children}</body>
+        </html>
+    )
 }

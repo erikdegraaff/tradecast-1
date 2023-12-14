@@ -17,20 +17,23 @@ export default function Marquee({
     delimiter,
     duration,
     reversed,
-    paused  
-} : Props) {
-    const [width, setWidth] = useState({totalWidth: 0, textWidth: 0})        
+    paused,
+}: Props) {
+    const [width, setWidth] = useState({ totalWidth: 0, textWidth: 0 })
     const windowSize = useWindowSize()
 
     const compRef = useRef<HTMLDivElement>(null)
     const textRef = useRef<HTMLSpanElement>(null)
 
     useEffect(() => {
-        const totalWidth = compRef && compRef.current ? compRef.current.offsetWidth : 0
-        const textWidth = textRef && textRef.current ? textRef.current.offsetWidth : 0
+        const totalWidth =
+            compRef && compRef.current ? compRef.current.offsetWidth : 0
+        const textWidth =
+            textRef && textRef.current ? textRef.current.offsetWidth : 0
 
         setWidth({
-            totalWidth, textWidth
+            totalWidth,
+            textWidth,
         })
     }, [windowSize])
 
@@ -38,19 +41,32 @@ export default function Marquee({
     const numCopies = Math.ceil(width.totalWidth / width.textWidth) + 1
 
     let textShadow = `${width.textWidth}px 0 currentColor,`
-    for(let i = 2; i < numCopies; i++) {
+    for (let i = 2; i < numCopies; i++) {
         textShadow += ` calc(${width.textWidth}px * ${i}) 0 currentColor,`
     }
     textShadow = textShadow.slice(0, -1)
 
-    const animationDuration = `${(width.textWidth / width.totalWidth) * (duration * (width.totalWidth / 20))}s`
+    const animationDuration = `${
+        (width.textWidth / width.totalWidth) *
+        (duration * (width.totalWidth / 20))
+    }s`
     const animationDirection = reversed ? 'reverse' : 'normal'
     const animationPlayState = paused ? 'paused' : 'running'
     const opacity = width.textWidth > 0 ? 1 : 0
 
     return (
-        <div className={styles.marquee} ref={compRef} style={{opacity}}>
-            <span ref={textRef} style={{textShadow, animationDuration, animationDirection, animationPlayState}}>{marqueeText}</span>            
+        <div className={styles.marquee} ref={compRef} style={{ opacity }}>
+            <span
+                ref={textRef}
+                style={{
+                    textShadow,
+                    animationDuration,
+                    animationDirection,
+                    animationPlayState,
+                }}
+            >
+                {marqueeText}
+            </span>
         </div>
     )
 }

@@ -1,23 +1,25 @@
 @import '../../globals.scss';
 
 .marquee {
-    overflow: hidden;
-    height: 100%;
     display: flex;
     align-items: center;
     background: $dark;
-    
+    height: 100%;
+    overflow: hidden;
+
     span {
-        white-space: nowrap;
         display: inline-block;
         animation: marquee 0s linear infinite;
         color: $light;
+        white-space: nowrap;
     }
 
     @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-    }     
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 }
-
-

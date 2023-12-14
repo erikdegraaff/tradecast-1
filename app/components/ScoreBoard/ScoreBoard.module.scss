@@ -1,40 +1,39 @@
 @import '../../globals.scss';
 
 .scoreBoard {
-    grid-area: scores;
-
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-area: scores;
     align-items: center;
 
     z-index: 2;
-    background: $dark; 
+    background: $dark;
 
     p {
-        padding: 0 $space 0 $space;
         display: flex;
         align-items: center;
+        padding: 0 $space 0 $space;
         height: 100%;
         text-transform: uppercase;
-   
+
         &.score {
+            display: flex;
+            justify-content: space-around;
             background: $light;
             color: $dark;
             font-weight: 700;
-            display: flex;
-            justify-content: space-around;
             span {
                 padding: 0 $space 0 $space;
                 font-weight: 400;
             }
         }
         &.time {
-            background: $primary;
-            padding: 0 $space*2 0 $space*2;
-            color: $light;
-            font-weight: 700;
             display: flex;
             justify-content: space-around;
+            background: $primary;
+            padding: 0 $space * 2 0 $space * 2;
+            color: $light;
+            font-weight: 700;
         }
     }
 }
