@@ -1,4 +1,4 @@
-import VideoPlayer from './components/VideoPlayer/VideoPlayer'
+import VideoPlayer from '@/components/VideoPlayer/VideoPlayer'
 import data from './data/data.json'
 
 import styles from './page.module.scss'

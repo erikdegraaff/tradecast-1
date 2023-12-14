@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Score } from '../../types/'
+import { Score } from '@/types/'
 
 import styles from './ScoreBoard.module.scss'
 interface Props {

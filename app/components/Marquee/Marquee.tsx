@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useState } from 'react'
-import useWindowSize from '../../hooks/useWindowSize'
+import useWindowSize from '@/hooks/useWindowSize'
 
 import styles from './Marquee.module.scss'
 interface Props {

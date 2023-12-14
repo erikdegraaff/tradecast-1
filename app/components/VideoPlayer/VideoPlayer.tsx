@@ -2,13 +2,13 @@
 
 import React, { useState, useRef } from 'react'
 
-import { Score, Events } from '../../types'
+import { Score, Events } from '@/types/'
 
-import Notifications from '../Notifications/Notifications'
-import ScoreBoard from '../ScoreBoard/ScoreBoard'
-import Button from '../Button/Button'
-import Marquee from '../Marquee/Marquee'
-import Overlay from '../Overlay/Overlay'
+import Notifications from '@/components/Notifications/Notifications'
+import ScoreBoard from '@/components/ScoreBoard/ScoreBoard'
+import Button from '@/components/Button/Button'
+import Marquee from '@/components/Marquee/Marquee'
+import Overlay from '@/components/Overlay/Overlay'
 
 import styles from './VideoPlayer.module.scss'
 interface Props {
