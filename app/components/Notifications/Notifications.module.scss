@@ -8,35 +8,38 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    //top: $pad;
-    //margin-top: $pad/2;
     
-
     .notification {
         background: $light;
-        padding: $pad;
         clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-        transition: clip-path .6s ease;
+        transition: clip-path .6s ease, max-height .6s ease .6s;
         z-index: 10;
         font-size: .8rem;
-        position: absolute;
-        opacity: .5;
+        max-height: 0px;
+        overflow: hidden;
 
         &.visible {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            max-height: 100px;
+            transition: clip-path .6s ease .6s, max-height .6s ease;
         }    
-
         p {
             color: $dark;
-            margin: 0px;
+            margin: 0px $space 0px $space;
             &:first-child {
-                margin-top: $pad;
+                margin-top: $space/2;
+            }
+            &:last-child {
+                margin-bottom: $space;
             }
         }
         h4 {
-            text-transform: uppercase;
             color: $primary;
-            margin: 0px;
+            text-transform: uppercase;
+            margin: $space $space 0px $space;
+            &:last-child {
+                margin-bottom: $space;
+            }
         }
     }
 }

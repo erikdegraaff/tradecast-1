@@ -2,8 +2,8 @@
 
 import { useRef, useEffect, useState } from 'react'
 import useWindowSize from '../../hooks/useWindowSize'
-import styles from './Marquee.module.scss'
 
+import styles from './Marquee.module.scss'
 interface Props {
     texts: string[]
     delimiter: string
@@ -19,23 +19,23 @@ export default function Marquee({
     reversed,
     paused  
 } : Props) {
-    const [width, setWidth] = useState({compWidth: 0, textWidth: 0})        
+    const [width, setWidth] = useState({totalWidth: 0, textWidth: 0})        
     const windowSize = useWindowSize()
 
     const compRef = useRef<HTMLDivElement>(null)
     const textRef = useRef<HTMLSpanElement>(null)
 
     useEffect(() => {
-        const compWidth = compRef && compRef.current ? compRef.current.offsetWidth : 0
+        const totalWidth = compRef && compRef.current ? compRef.current.offsetWidth : 0
         const textWidth = textRef && textRef.current ? textRef.current.offsetWidth : 0
 
         setWidth({
-            compWidth, textWidth
+            totalWidth, textWidth
         })
     }, [windowSize])
 
     const marqueeText = `${texts.join(delimiter)}${delimiter}`
-    const numCopies = Math.ceil(width.compWidth / width.textWidth) + 1
+    const numCopies = Math.ceil(width.totalWidth / width.textWidth) + 1
 
     let textShadow = `${width.textWidth}px 0 currentColor,`
     for(let i = 2; i < numCopies; i++) {
@@ -43,7 +43,7 @@ export default function Marquee({
     }
     textShadow = textShadow.slice(0, -1)
 
-    const animationDuration = `${(width.textWidth / width.compWidth) * (duration * (width.compWidth / 20))}s`
+    const animationDuration = `${(width.textWidth / width.totalWidth) * (duration * (width.totalWidth / 20))}s`
     const animationDirection = reversed ? 'reverse' : 'normal'
     const animationPlayState = paused ? 'paused' : 'running'
     const opacity = width.textWidth > 0 ? 1 : 0

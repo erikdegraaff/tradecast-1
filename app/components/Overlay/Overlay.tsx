@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import styles from './Overlay.module.scss'
 
+import styles from './Overlay.module.scss'
 interface Props {
   visible: boolean
   children?: ReactNode

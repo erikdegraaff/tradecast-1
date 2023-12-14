@@ -1,7 +1,6 @@
 'use client'
 
-import React, { SyntheticEvent, useState, useRef } from 'react';
-import styles from './VideoPlayer.module.scss'
+import React, { useState, useRef } from 'react';
 
 import {Score, Events} from '../../types'
 
@@ -10,6 +9,8 @@ import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import Button from '../Button/Button';
 import Marquee from '../Marquee/Marquee'
 import Overlay from '../Overlay/Overlay'
+
+import styles from './VideoPlayer.module.scss'
 interface Props {
     data: any
 }
@@ -17,7 +18,7 @@ interface Props {
 export default function VideoPlayer({data}: Props) {
     const [events, setEvents] = useState<Events[]>(data.events.sort((a: Events, b: Events) => {return a.time - b.time}).map((ev:Events) => {return {...ev, visible: false}}))
     const [paused, setPaused] = useState(true)
-    const [score, setScore] = useState<Score | undefined>({home: 0, away: 0})
+    const [score, setScore] = useState<Score>({home: 0, away: 0})
     const [gameTime, setGameTime] = useState('0:00')
     const [gameEnded, setGameEnded] = useState(false)
 
@@ -29,8 +30,7 @@ export default function VideoPlayer({data}: Props) {
     data.ticker.map((tick: any) => {
       marqueeTexts.push(tick.body)
     })
-  
-    
+   
     const handleTimeUpdate = (event: any) => {
         // 10 seconds is a minute in this case
         // the data is 90min, the sample video ~9min
@@ -61,8 +61,11 @@ export default function VideoPlayer({data}: Props) {
             }
         })
         const score = scores.length ? scores[scores.length - 1].newScore : {home: 0, away: 0}
-        setScore(score)
+        if(score) {
+            setScore(score)
+        }
 
+        // is game ended
         setGameEnded(currTime > gameEndedTime + 0.05)
     }
 
@@ -73,8 +76,6 @@ export default function VideoPlayer({data}: Props) {
             setGameEnded(false)
         }
     }
-
-    //const eventsOnScreen = events.filter((ev) => {return ev.visible === true})
 
     return (
         <div className={styles.videoPlayer}>

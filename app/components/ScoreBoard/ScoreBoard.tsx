@@ -1,18 +1,14 @@
 import { ReactNode } from "react";
+import { Score } from '../../types/'
+
 import styles from './ScoreBoard.module.scss'
-
-interface Score {
-  home: number
-  away: number
-}
-
-interface ScoreBoardProps {
+interface Props {
   gameTime: string
-  score: Score | undefined
+  score: Score
   children: ReactNode
 }
 
-export default function ScoreBoard({gameTime, score, children} : ScoreBoardProps) {
+export default function ScoreBoard({gameTime, score, children} : Props) {
     return (
       <div className={styles.scoreBoard} >
         <p className={styles.time}>{gameTime}</p>

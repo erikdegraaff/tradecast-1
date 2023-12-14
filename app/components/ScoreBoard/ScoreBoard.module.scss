@@ -11,7 +11,7 @@
     background: $dark; 
 
     p {
-        padding: 0 $pad 0 $pad;
+        padding: 0 $space 0 $space;
         display: flex;
         align-items: center;
         height: 100%;
@@ -24,18 +24,17 @@
             display: flex;
             justify-content: space-around;
             span {
-                padding: 0 $pad 0 $pad;
+                padding: 0 $space 0 $space;
                 font-weight: 400;
             }
         }
         &.time {
             background: $primary;
-            padding: 0 $pad*2 0 $pad*2;
+            padding: 0 $space*2 0 $space*2;
             color: $light;
             font-weight: 700;
             display: flex;
             justify-content: space-around;
-
         }
     }
 }
