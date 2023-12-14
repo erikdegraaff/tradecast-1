@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.scss'
 
 export const metadata: Metadata = {
-  title: 'Watch Soccer Game'
+  title: 'Soccer Game'
 }
 
 export default function RootLayout({
